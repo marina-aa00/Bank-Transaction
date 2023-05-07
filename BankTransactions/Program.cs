@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 
 // DI for DbContext
 builder.Services.AddDbContext<TransactionDbContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("DbConnection")));
+options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")));
 
 var app = builder.Build();
 
