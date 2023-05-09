@@ -37,7 +37,7 @@
                             @Html.DisplayFor(modelItem => item.AccountNumber)
                             </td>
                             <td>
-                            @Html.DisplayFor(modelItem => item.BeneficiaryName)
+                            @Html.Raw(item.BeneficiaryName)
                             </td>
                             <td>
                             @Html.DisplayFor(modelItem => item.Date)
