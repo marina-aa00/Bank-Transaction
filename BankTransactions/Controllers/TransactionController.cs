@@ -21,10 +21,10 @@ namespace BankTransactions.Controllers
         }
 
 
-        // GET: Transaction/AddOrEdit
-        public IActionResult AddOrEdit(int id = 0)
+        // GET: Transaction/AddOrEdit?id=5
+        public IActionResult AddOrEdit(int? id)
         {
-            if (id == 0)
+            if (id == null ||id == 0)
                 return View(new Transaction());
             else
                 return View(_context.Transactions.Find(id));
@@ -32,12 +32,12 @@ namespace BankTransactions.Controllers
         
 
 
-        // POST: Transaction/AddOrEdit
+        // POST: Transaction/AddOrEdit?id=5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit([Bind("TransactionId,AccountNumber,BeneficiaryName,BankName,SWIFTCode,Amount,Date")] Transaction transaction)
+        public async Task<IActionResult> AddOrEdit(int id, [Bind("TransactionId,AccountNumber,BeneficiaryName,BankName,SWIFTCode,Amount,Date")] Transaction transaction)
         {
             // Server Side Validation
             if (ModelState.IsValid)
