@@ -26,7 +26,7 @@ namespace BankTransactions.Models
         public string BankName { get; set; }
 
         [Column(TypeName = "nvarchar(11)")]
-        [DisplayName("SWIFT Code")]
+        [DisplayName("Currency Type")]
         [Required(ErrorMessage = "This field is required.")]
         [MaxLength(11, ErrorMessage = "Maximum 11 characters only.")]
         public string SWIFTCode { get; set; }
