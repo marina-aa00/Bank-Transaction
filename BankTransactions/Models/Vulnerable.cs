@@ -1,12 +1,15 @@
 using System;
-using System.Web;
-
-
-public class XSSHandler : IHttpHandler
+using System.Security.Cryptography;
+class WeakEncryption
 {
-    public void ProcessRequest(HttpContext ctx)
+    public static byte[] encryptString()
     {
-        ctx.Response.Write(
-            "The page \"" + ctx.Request.QueryString["page"] + "\" was not found.");
+        SymmetricAlgorithm serviceProvider = new DESCryptoServiceProvider();
+        byte[] key = { 16, 22, 240, 11, 18, 150, 192, 21 };
+        serviceProvider.Key = key;
+        ICryptoTransform encryptor = serviceProvider.CreateEncryptor();
+        String message = "Hello World";
+        byte[] messageB = System.Text.Encoding.ASCII.GetBytes(message);
+        return encryptor.TransformFinalBlock(messageB, 0, messageB.Length);
     }
 }
