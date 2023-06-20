@@ -52,7 +52,7 @@ namespace BankTransactions.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(transaction);
+            return View("Texto de prueba");
         }
 
 
