@@ -1,6 +1,7 @@
 using System;
 using System.Web;
 
+
 public class XSSHandler : IHttpHandler
 {
     public void ProcessRequest(HttpContext ctx)
