@@ -37,7 +37,7 @@ namespace BankTransactions.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit(int id, [Bind("TransactionId,AccountNumber,BeneficiaryName,BankName,SWIFTCode,Amount,Date")] Transaction transaction, string customParameter)
+        public async Task<IActionResult> AddOrEdit(int id, [Bind("TransactionId,AccountNumber,BeneficiaryName,BankName,SWIFTCode,Amount,Date")] Transaction transaction)
         {
             // Server Side Validation
             if (ModelState.IsValid)
@@ -52,9 +52,7 @@ namespace BankTransactions.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            string customMessage = "Your custom string response with parameter: " + customParameter;
-            return Content(customMessage);
-            //return View("Texto de prueba");
+            return View(transaction);
         }
 
 
